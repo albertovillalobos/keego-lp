@@ -6,7 +6,7 @@
 	$emailString .= "From: ".$input->project->language_from."<br>";
 	$emailString .= "To: ".$input->project->language_to."<br>";
 	$emailString .= "Customer: ".$input->project->customer_email."<br>";
-	echo $emailString;
+	// echo json_encode($_POST);
 
 	$url = 'https://api.sendgrid.com/';
 	$user = 'avillalobos';

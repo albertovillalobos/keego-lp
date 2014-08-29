@@ -124,9 +124,16 @@
 		                </div>
 		        	</div>
 		        </div>
+		        <div class='row'>
+		        	<div class="col-sm-12">
+		        		<div class="form-group" id="ajax_response">
+		        		</div>
+		        	</div>
+		        </div>
 		    </div>
 		    <div class="modal-footer">
 		        <button type="submit" class="btn btn-primary">Translate!</button>
+		        <div id="callback_response"></div>
 		    </div>
 		</form>      
     </div>
@@ -149,6 +156,15 @@ jQuery(function($) {
             success: function(data, status) {
                 $target.modal('hide');
                 console.log(data);
+                var response = $.parseJSON(data);
+                console.log(response);
+
+                if(response.message === 'success') {
+                	$('#callback_response').html('Thank you! You will receive a confirmation email shortly');
+                }
+                else {
+                	$('#callback_response').html('Oops, something went wrong :c !')	
+                }
             }
         });
 
