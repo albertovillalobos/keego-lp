@@ -6,12 +6,13 @@
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title>Keego</title>
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/master.css">
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 	<script>
-	$(window).sscroll(function() {
+	$(window).scroll(function() {
 		var height = $(window).scrollTop();
 
 		if(height > 480) {
@@ -61,18 +62,101 @@
 			<h1><a href="index.html">Keego</a></h1>
 
 			<ul>
-				<li><a href="" class="cta">Try it for free</a></li>
+				<li>
+					<a class="cta" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
+				</li>
 			</ul>
 		</div>
 	</div>
 
+
 	<div class="blurb-wrapper">
 		<h2>High quality translation for your business</h2>
 		<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
-		<a href="" class="button" style="margin-bottom: 10px;">Try it for free</a>
+		<a href="" class="button" style="margin-bottom: 10px;" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a>
 		<p style="font-size: 16px; color: rgba(255, 255, 255, 0.5);">No monthly contracts, no obligations, no headaches.</p>
+
 	</div>
 </div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+		<form  data-async method="POST" action="/php/sendEmail.php">
+		    <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+		        </button>
+		        <h4 class="modal-title" id="myModalLabel">Request translation</h4>
+		    </div>
+		    <div class="modal-body">
+		        <div class="form-group">
+		            <label class="control-label" for="project_text_original">Text to translate</label>
+		            <textarea rows="4" cols="30" required="required" name="project[text_original]" class="form-control" id="project_text_original">asdfasdf</textarea>
+		        </div>
+		        <div class="row">
+		            <div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="project_language_from">Source language</label>
+		                    <select required="required" name="project[language_from]" class="form-control" id="project_language_from">
+		                        <option value=""></option>
+		                        <option value="en" selected="selected">English</option>
+		                        <option value="es">Spanish</option>
+		                    </select>
+		                </div>
+		            </div>
+
+		            <div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="project_language_to">Target language</label>
+		                    <select required="required" name="project[language_to]" class="form-control" id="project_language_to">
+		                        <option value=""></option>
+		                        <option value="en">English</option>
+		                        <option value="es" selected="selected">Spanish</option>
+		                    </select>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="customer_email">Your Email</label>
+		                    <input type="email" name="project[customer_email]"required="required" class="form-control" id="customer_email" placeholder="example@example.com">
+		                </div>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="submit" class="btn btn-primary">Translate!</button>
+		    </div>
+		</form>      
+    </div>
+  </div>
+</div>	
+
+		<!--  Modal AJAX Submit-->
+<script type="text/javascript">
+
+jQuery(function($) {
+    $('form[data-async]').on('submit', function(event) {
+        var $form = $(this);
+        var $target = $($form.attr('data-target'));
+
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+
+            success: function(data, status) {
+                $target.modal('hide');
+                console.log(data);
+            }
+        });
+
+        event.preventDefault();
+    });
+});
+
+</script>		
 
 <div class="mod">
 	<div class="mod-wrapper">
@@ -201,6 +285,9 @@
 	// $('.blurb').backstretch("//d37hg21mvr93w7.cloudfront.net/img/hero-home.1408557863.jpg");
 	$('.blurb').backstretch("http://brooklynbridge.io/assets/images/bg-header.jpg");
 </script>
+<script src="js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>
