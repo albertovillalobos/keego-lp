@@ -250,6 +250,10 @@ h3 {
 	background: #e93060;
 	border-radius: 5px;
 }
+.button:hover {
+	text-decoration: none;
+	color: white;
+}
 
 .seen-in {
 	font-family: din_round_probold;
