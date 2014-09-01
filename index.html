@@ -12,7 +12,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 	<script>
-	$(window).scroll(function() {
+	$(window).sscroll(function() {
 		var height = $(window).scrollTop();
 
 		if(height > 480) {
@@ -56,29 +56,24 @@
 
 <body>
 
-<div class="blurb" style="displays: none;">
+<div class="blurb">
 	<div class="header">
 		<div class="header-wrapper">
-			<h1><a href="index.html">Keego</a></h1>
+			<h1><img src="images/logo.png" />Keego</h1>
 
 			<ul>
-				<li>
-					<a class="cta" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
-				</li>
+				<li><a href="" class="cta" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a></li>
 			</ul>
 		</div>
 	</div>
 
-
 	<div class="blurb-wrapper">
 		<h2>High quality translation for your business</h2>
 		<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
-		<a href="" class="button" style="margin-bottom: 10px;" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a>
-		<p style="font-size: 16px; color: rgba(255, 255, 255, 0.5);">No monthly contracts, no obligations, no headaches.</p>
-
+		<a href="" class="button" style="margin-bottom: 10px;" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
+		<p style="font-size: 16px;">No monthly contracts, no obligations, no headaches.</p>
 	</div>
 </div>
-
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -141,43 +136,6 @@
   </div>
 </div>	
 
-		<!--  Modal AJAX Submit-->
-
-		<!-- 
-<script type="text/javascript">
-
-jQuery(function($) {
-    $('form[data-async]').on('submit', function(event) {
-        var $form = $(this);
-        var $target = $($form.attr('data-target'));
-
-        $.ajax({
-            type: $form.attr('method'),
-            url: $form.attr('action'),
-            data: $form.serialize(),
-
-            success: function(data, status) {
-                $target.modal('hide');
-                console.log(data);
-                var response = $.parseJSON(data);
-                console.log(response);
-
-                if(response.message === 'success') {
-                	$('#callback_response').html('Thank you! You will receive a confirmation email shortly');
-                }
-                else {
-                	$('#callback_response').html('Oops, something went wrong :c !')	
-                }
-            }
-        });
-
-        event.preventDefault();
-    });
-});
-
-</script>		
-		 -->
-
 <div class="mod">
 	<div class="mod-wrapper">
 		<ul class="featured-in">
@@ -193,20 +151,44 @@ jQuery(function($) {
 <div class="mod" style="border-top: 1px solid #e93060;">
 	<div class="mod-wrapper">
 		<div class="mod-header">
-			<h2>Collaborative translation that ensures<br /><strong>outstanding quality</strong></h2>
-			<p class="intro">How do you know if something you have translated is accurate? Keego is solving this problem by leveraging on the power of its community. How do we do it:</p>
+			<h2>Translation crafted by our community of <strong>professionals and bilinguals</strong></h2>
+		</div>
+
+		<div class="span-6 col user">
+			<img src="images/carolina.jpg">
+			<h3>Carolina Gandía</h3>
+			<p class="user-location">Berlin, Germany</p>
+			<p>Professional translator with a BA degree in Translation and Interpreting from the Universitat Oberta de Catalunya.</p>
+			<span class="user-verified">✓ Verified by Keego</span>
+		</div>
+
+		<div class="span-6 col user">
+			<img src="images/antonio.jpg">
+			<h3>Antonio Cobo</h3>
+			<p class="user-location">Buenos Aires, Argentina</p>
+			<p>Systems Engineer, translating for his consulting company. Translates articles about music, news and interviews.</p>
+			<span class="user-verified">✓ Verified by Keego</span>
+		</div>
+	</div>
+</div>
+
+<div class="mod" style="border-top: 1px solid #e93060;">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2>But&hellip; how do you ensure quality?</h2>
+			<p class="intro">Glad you asked! We are solving this problem thanks to the power of our community:</p>
 		</div>
 
 		<div class="span-6 col mod-text">
 			<img class="mod-icon" src="images/icon-reputation.svg" />
-			<h3>1. Vetting and Reputation</h3>
-			<p>First, we carefully hand-pick every person that works in the community. And clients leave a rating for the translator after completing their projects. This two step process allows us to recommend you only the most qualified persons to work with.</p>
+			<h3>Vetting and Reputation</h3>
+			<p>First, we carefully hand-pick every translator. Then, after each translation is completed, the translator receives a rating from their clients.</p>
 		</div>
 
 		<div class="span-6 col mod-text">
 			<img class="mod-icon" src="images/icon-human-based-2.svg">
-			<h3>2. Community Proofreading</h3>
-			<p>But translators don’t work solo. Proofreaders double check other translators’ projects as well. They do this to earn badges: having the most badges make them more attractive for clients, while you benefit from extra accuracy checks.</p>
+			<h3>Collaborative Proofreading</h3>
+			<p>Translators don’t work solo. Proofreaders double check other translators projects, this way ensuring extra accuracy.</p>
 		</div>
 	</div>
 </div>
@@ -280,7 +262,7 @@ jQuery(function($) {
 	<div class="mod-wrapper">
 		<div class="footer-blurb">
 			<p>Ready to order your translation?</p>
-			<a class="button">Try it for free</a>
+			<a class="button" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
 		</div>
 
 		<ul>
@@ -288,6 +270,7 @@ jQuery(function($) {
 			<li><a href="news.html">In the News</a></li>
 			<li><a href="investors.html">Investors</a></li>
 			<li><a href="jobs.html">Jobs</a></li>
+			<li><a href="http://blog.keego.co">Blog</a></li>
 		</ul>
 
 		<ul>
@@ -304,10 +287,10 @@ jQuery(function($) {
 <script>
 	// $('.blurb').backstretch("//d37hg21mvr93w7.cloudfront.net/img/hero-home.1408557863.jpg");
 	$('.blurb').backstretch("http://brooklynbridge.io/assets/images/bg-header.jpg");
+	//$('.blurb').backstretch("images/pattern.jpg");
 </script>
+
 <script src="js/bootstrap.min.js"></script>
-
-
 
 </body>
 </html>

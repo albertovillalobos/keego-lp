@@ -70,7 +70,7 @@ a:hover {
 }
 
 p {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	font-size: 16px;
 	line-height: 1.5;
 }
@@ -90,7 +90,7 @@ p.intro {
 
 h2 {
 	margin-bottom: 20px;
-	font-size: 48px;
+	font-size: 40px;
 	font-weight: normal;
 	line-height: 1.4;
 	color: #e93060;
@@ -98,7 +98,6 @@ h2 {
 
 h3 {
 	margin-bottom: 20px;
-	text-transform: uppercase;
 	font-size: 24px;
 	font-weight: normal;
 	line-height: 1.4;
@@ -114,16 +113,11 @@ h3 {
 
 .mod-text {
 	padding: 30px;
-	background: rgba(85, 190, 222, 0.8);
 	border-radius: 20px;
 }
 
-.mod-text h3 {
-	color: #fff;
-}
-
 .mod-text p {
-	color: #125056;
+	color: #888;
 }
 
 .mod-icon {
@@ -177,23 +171,27 @@ h3 {
 }
 
 .header h1 {
+	font-family: din_round_probold;
 	font-size: 16px;
 	font-weight: normal;
+	text-transform: uppercase;
 	color: #fff;
+	vertical-align: middle;
 	float: left;
-}
-
-.header.inner h1 {
-	color: #333;
 }
 
 .header h1 a {
 	display: block;
+	color: #fff;
+}
+
+.header.inner h1 a {
+	color: #333;
+}
+
+.header img {
 	width: 30px;
-	height: 45px;
-	background: transparent url(../images/keego-logo.jpg) no-repeat left top;
-	background-size: 100%;
-	text-indent: -1000em;
+	margin-right: 10px;
 }
 
 .header ul {
@@ -202,21 +200,20 @@ h3 {
 }
 
 .header li {
-	margin-left: 40px;
 	font-size: 16px;
 	float: left;
 }
 
 .header li a {
+	display: block;
+	padding: 10px;
 	color: rgba(255,255,255,.5);
-
 	-webkit-transition: all .1s linear;
 	-moz-transition: all .1s linear;
 	transition: all .1s linear;
 }
 
 .header.inner li a {
-	padding: 10px;
 	background: #e93060;
 	color: #fff;
 }
@@ -226,7 +223,6 @@ h3 {
 }
 
 .blurb {
-
 }
 
 .blurb-wrapper {
@@ -327,9 +323,6 @@ h3 {
 	display: none;
 }
 
-.header {
-}
-
 .cta {
 	padding: 10px;
 	border-radius: 5px;
@@ -419,6 +412,50 @@ p.about span {
 	border-radius: 20px;
 }
 
+.mentor-group {
+	margin-bottom: 60px;
+}
+
+.user {
+	text-align: center;
+}
+
+.user img {
+	margin-bottom: 20px;
+	width: 120px;
+	border-radius: 300px;
+}
+
+.user h3 {
+	margin-bottom: 0;
+	color: #e93060;
+}
+
+.user .user-location {
+	font-family: din_round_probold;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #333;
+}
+
+.user p {
+	color: #888;
+}
+
+.user-verified {
+	display: inline-block;
+	padding: 5px;
+	font-family: din_round_probold;
+	font-size: 13px;
+	text-transform: uppercase;
+	vertical-align: middle;
+	background: #84c441;
+	color: #fff;
+	border-radius: 3px;
+}
+
+
 @media screen and (max-width: 800px) {
 	.blurb h2 {
 		font-size: 30px;
@@ -447,6 +484,13 @@ p.about span {
 @media screen and (max-width: 550px) {
 	.featured-in li {
 		margin-bottom: 20px;
+	}
+
+	.user {
+		max-width: none;
+		width: 100%;
+		margin-bottom: 60px;
+		float: none;
 	}
 
 	.span-4 {

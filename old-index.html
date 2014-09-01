@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<title>Keego</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/master.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<script>
+	$(window).scroll(function() {
+		var height = $(window).scrollTop();
+
+		if(height > 480) {
+			$('.header').css({
+				'position' : 'fixed',
+				'top' : '0',
+				'width' : '100%',
+				'background-color' : '#ffffff',
+				'border-bottom' : '1px solid #ddd'
+			});
+
+			$('.blurb-wrapper.intro').css({
+				'margin-top' : '62px'
+			});
+
+			$('.header .cta').css({
+				'background-color' : '#e93060',
+				'color' : '#fff'
+			});
+		}
+
+		if(height < 480) {
+			$('.header').css({
+				'position': 'relative',
+				'background-color' : 'transparent',
+				'border-bottom' : '1px solid rgba(255,255,255,.1)'
+			});
+
+			$('.blurb-wrapper.intro').css({
+				'margin-top' : '0'
+			});
+
+			$('.header .cta').css({
+				'background-color' : 'transparent',
+				'color' : 'rgba(255, 255, 255, 0.5)'
+			});
+		}
+	});
+	</script>
+</head>
+
+<body>
+
+<div class="blurb" style="displays: none;">
+	<div class="header">
+		<div class="header-wrapper">
+			<h1><a href="index.html">Keego</a></h1>
+
+			<ul>
+				<li>
+					<a class="cta" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="blurb-wrapper">
+		<h2>High quality translation for your business</h2>
+		<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
+		<a href="" class="button" style="margin-bottom: 10px;" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a>
+		<p style="font-size: 16px; color: rgba(255, 255, 255, 0.5);">No monthly contracts, no obligations, no headaches.</p>
+
+	</div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+		<!-- <form  data-async method="POST" action="/php/sendEmail.php"> -->
+		<form method="POST" action="/submitEmail.php">
+		    <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+		        </button>
+		        <h4 class="modal-title" id="myModalLabel">Request translation</h4>
+		    </div>
+		    <div class="modal-body">
+		        <div class="form-group">
+		            <label class="control-label" for="project_text_original">Text to translate</label>
+		            <textarea rows="4" cols="30" required="required" name="project[text_original]" class="form-control" id="project_text_original"></textarea>
+		        </div>
+		        <div class="row">
+		            <div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="project_language_from">Source language</label>
+		                    <select required="required" name="project[language_from]" class="form-control" id="project_language_from">
+		                        <option value=""></option>
+		                        <option value="en" selected="selected">English</option>
+		                        <option value="es">Spanish</option>
+		                    </select>
+		                </div>
+		            </div>
+
+		            <div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="project_language_to">Target language</label>
+		                    <select required="required" name="project[language_to]" class="form-control" id="project_language_to">
+		                        <option value=""></option>
+		                        <option value="en">English</option>
+		                        <option value="es" selected="selected">Spanish</option>
+		                    </select>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-sm-6">
+		                <div class="form-group">
+		                    <label class="control-label" for="customer_email">Your Email</label>
+		                    <input type="email" name="project[customer_email]"required="required" class="form-control" id="customer_email" placeholder="example@example.com">
+		                </div>
+		        	</div>
+		        </div>
+		        <div class='row'>
+		        	<div class="col-sm-12">
+		        		<div class="form-group" id="ajax_response">
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="submit" class="btn btn-primary">Translate!</button>
+		        <div id="callback_response"></div>
+		    </div>
+		</form>      
+    </div>
+  </div>
+</div>	
+
+		<!--  Modal AJAX Submit-->
+
+		<!-- 
+<script type="text/javascript">
+
+jQuery(function($) {
+    $('form[data-async]').on('submit', function(event) {
+        var $form = $(this);
+        var $target = $($form.attr('data-target'));
+
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+
+            success: function(data, status) {
+                $target.modal('hide');
+                console.log(data);
+                var response = $.parseJSON(data);
+                console.log(response);
+
+                if(response.message === 'success') {
+                	$('#callback_response').html('Thank you! You will receive a confirmation email shortly');
+                }
+                else {
+                	$('#callback_response').html('Oops, something went wrong :c !')	
+                }
+            }
+        });
+
+        event.preventDefault();
+    });
+});
+
+</script>		
+		 -->
+
+<div class="mod">
+	<div class="mod-wrapper">
+		<ul class="featured-in">
+			<li><span class="seen-in">Featured in</span></li>
+			<li><a href="http://techcrunch.com/2014/07/18/the-brandery-accelerator-launches-its-latest-class/"><img src="images/logo-tc.png" /></a></li>
+			<li><a href="http://www.brandery.org" target="_blank"><img src="images/logo-brandery.jpg" class="logo-brandery" /></a></li>
+			<li><a href="http://www.cincinnati.com/story/money/business/2014/07/22/the-brandery-announces-new-class-of-startups/12992585/" target="_blank"><img src="images/logo-cincinnati.png" /></a></li>
+			<li><a href="http://www.revolution.com/revolutionary-views/post/riseofrest-pitch-competition-finalists-announced#.U_59O9y-ITs"><img src="images/logo-rise.png" class="logo-rise" /></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="mod" style="border-top: 1px solid #e93060;">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2>Collaborative translation that ensures<br /><strong>outstanding quality</strong></h2>
+			<p class="intro">How do you know if something you have translated is accurate? Keego is solving this problem by leveraging on the power of its community. How do we do it:</p>
+		</div>
+
+		<div class="span-6 col mod-text">
+			<img class="mod-icon" src="images/icon-reputation.svg" />
+			<h3>1. Vetting and Reputation</h3>
+			<p>First, we carefully hand-pick every person that works in the community. And clients leave a rating for the translator after completing their projects. This two step process allows us to recommend you only the most qualified persons to work with.</p>
+		</div>
+
+		<div class="span-6 col mod-text">
+			<img class="mod-icon" src="images/icon-human-based-2.svg">
+			<h3>2. Community Proofreading</h3>
+			<p>But translators don’t work solo. Proofreaders double check other translators’ projects as well. They do this to earn badges: having the most badges make them more attractive for clients, while you benefit from extra accuracy checks.</p>
+		</div>
+	</div>
+</div>
+
+<div class="mod" style="border-top: 1px solid #ddd; display: none">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2 class="centered">How it works</h2>
+			<p class="intro centered">Support text if we need it</p>
+		</div>
+
+		<div class="span-4 col mod-text">
+			<h3>Create your project</h3>
+			<p>Just paste the text you need translated. Try it: Your first 100 words are on us.</p>
+		</div>
+
+		<div class="span-4 col mod-text">
+			<h3>Pick a translator</h3>
+			<p>We recommend you only fully vetted translators to get the job done.</p>
+		</div>
+
+		<div class="span-4 col mod-text">
+			<h3>Get your text translated</h3>
+			<p>Your translation will be completed and delivered to you within 24 hours.</p>
+		</div>
+	</div>
+</div>
+
+<div class="mod" style="background: #ddd;">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2>In the words of our clients:</h2>
+		</div>
+
+		<div class="testimonial">
+			<img src="images/wiki.jpg" style="width: 150px; margin-bottom: 30px; border-radius: 100px;" />
+			<p>“The process of working with a Keego translator was smooth and straight-forward. We had our website contents completely translated into Spanish in less than a week.”</p>
+
+			<span class="testimonial-author">&mdash;Wiki Chaves, Head of Design &amp; Marketing at <a href="http://www.xapo.com">Xapo Inc.</a></span>
+		</div>
+	</div>
+</div>
+
+<div class="mod">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2>Our promise to you:</h2>
+		</div>
+
+		<div class="mod-header feature col span-4">
+			<img class="mod-icon" src="images/icon-human-based.svg">
+			<h2 style="color: #e93060;">Never machines, always humans</strong></h2>
+			<p>There is a always a real human behind every project, a translator you can interact with, ask questions and clarify the tone and voice of your text.</p>
+		</div>
+
+		<div class="mod-header feature col span-4">
+			<img class="mod-icon" src="images/icon-pricing.svg">
+			<h2 style="color: #e93060;">Pricing that doesn't break the bank</strong></h2>
+			<p>Rates are flexible and are based on the specialization you require. Most projects, like one page documents or small websites, range from $0,07/word to $0,10/word.</p>
+		</div>
+
+		<div class="mod-header feature col span-4">
+			<img class="mod-icon" src="images/icon-turnover.svg">
+			<h2 style="color: #e93060;">Fast turnover while delivering high quality</strong></h2>
+			<p>After a final proofread check by another translator, we will deliver your translated text to your email in less than a day—usually, in less than 12 hours.</p>
+		</div>
+	</div>
+</div>
+
+<div class="mod footer">
+	<div class="mod-wrapper">
+		<div class="footer-blurb">
+			<p>Ready to order your translation?</p>
+			<a class="button">Try it for free</a>
+		</div>
+
+		<ul>
+			<li><a href="about.html">About Keego</a></li>
+			<li><a href="news.html">In the News</a></li>
+			<li><a href="investors.html">Investors</a></li>
+			<li><a href="jobs.html">Jobs</a></li>
+		</ul>
+
+		<ul>
+			<li><a href="http://www.twitter.com/usekeego">Follow us on Twitter</a></li>
+		</ul>
+
+		<ul>
+			<li>&copy; 2014 Keego LLC · Made with ❤ in OTR, USA</li>
+		</ul>
+	</div>
+</div>
+
+<script src="js/jquery.backstretch.min.js"></script>
+<script>
+	// $('.blurb').backstretch("//d37hg21mvr93w7.cloudfront.net/img/hero-home.1408557863.jpg");
+	$('.blurb').backstretch("http://brooklynbridge.io/assets/images/bg-header.jpg");
+</script>
+<script src="js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
