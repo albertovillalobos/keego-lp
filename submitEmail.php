@@ -41,7 +41,7 @@
 	curl_close($session);
 
 	$message = "N/A";
-	$messageSuccess = "<span>Thank you!</span> You will receive a confirmation email shortly";
+	$messageSuccess = "Thank you! Expect to see an email with hand-picked translators to get your project started very soon.";
 	$maessageFailure = "<span>Oops!</span> Something went wrong :c";
 
 	$response = json_decode($response);
@@ -73,17 +73,16 @@
 
 <div class="header inner">
 	<div class="header-wrapper">
-		<h1><a href="index.html">Keego</a></h1>
+		<h1><a href="index.html"><img src="images/logo.png" />Keego</a></h1>
 
 		<ul>
-			<li><a href="/" class="cta">Try it for free</a></li>
+			<li><a href="" class="cta">Try it for free</a></li>
 		</ul>
 	</div>
 </div>
 
 <div class="wrapper">
-	<p class="about"><span></span> You will receive a confirmation email shortly.</p>
-	<img src="images/team.png" style="width: 100%; max-width: 960px; margin-bottom: 60px;"/>
+	<p class="about">Thank you! Expect to see an email with hand-picked translators to get your project started very soon.</p>
 </div>
 
 <div class="mod footer">
@@ -97,7 +96,7 @@
 			<li><a href="about.html">About Keego</a></li>
 			<li><a href="news.html">In the News</a></li>
 			<li><a href="investors.html">Investors</a></li>
-			<li><a href="jobs.html">Jobs</a></li>
+			<li><a href="http://blog.keego.co">Blog</a></li>
 		</ul>
 
 		<ul>

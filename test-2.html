@@ -6,145 +6,34 @@
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title>Keego</title>
 	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/master.css">
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-	<script>
-	$(window).sscroll(function() {
-		var height = $(window).scrollTop();
 
-		if(height > 480) {
-			$('.header').css({
-				'position' : 'fixed',
-				'top' : '0',
-				'width' : '100%',
-				'background-color' : '#ffffff',
-				'border-bottom' : '1px solid #ddd'
-			});
-
-			$('.blurb-wrapper.intro').css({
-				'margin-top' : '62px'
-			});
-
-			$('.header .cta').css({
-				'background-color' : '#e93060',
-				'color' : '#fff'
-			});
-		}
-
-		if(height < 480) {
-			$('.header').css({
-				'position': 'relative',
-				'background-color' : 'transparent',
-				'border-bottom' : '1px solid rgba(255,255,255,.1)'
-			});
-
-			$('.blurb-wrapper.intro').css({
-				'margin-top' : '0'
-			});
-
-			$('.header .cta').css({
-				'background-color' : 'transparent',
-				'color' : 'rgba(255, 255, 255, 0.5)'
-			});
-		}
-	});
-	</script>
 </head>
 
-<body>
+<body class="page">
 
-<div class="blurb">
-	<div class="header">
-		<div class="header-wrapper">
-			<h1><img src="images/logo.png" />Keego</h1>
+<div style="background: #eee;">
+<div style="margin: 0 auto; max-width: 1280px; width: 1280px;">
+	<div class="section">
+		<div class="inner">
+			<div class="blurb-wrapper">
+				<h2>Translate everything.</h2>
+				<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
+				<a style="margin-bottom: 10px;" class="button" href="">Try it for free</a>
+				<p style="font-size: 16px;">No monthly contracts, no obligations, no headaches.</p>
+			</div>
 
-			<ul>
-				<li><a href="" class="cta" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="blurb-wrapper">
-		<h2>High quality translation for your business</h2>
-		<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
-		<a href="" class="button" style="margin-bottom: 10px;" data-toggle="modal" data-target=".bs-example-modal-sm">Try it for free</a>
-		<p style="font-size: 16px;">No monthly contracts, no obligations, no headaches.</p>
-	</div>
-</div>
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-		<!-- <form  data-async method="POST" action="/php/sendEmail.php"> -->
-		<form method="POST" action="/submitEmail.php">
-		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
-		        </button>
-		        <h4 class="modal-title" id="myModalLabel">Request translation</h4>
-		    </div>
-		    <div class="modal-body">
-		        <div class="form-group">
-		            <label class="control-label" for="project_text_original">Text to translate</label>
-		            <textarea rows="4" cols="30" required="required" name="project[text_original]" class="form-control" id="project_text_original"></textarea>
-		        </div>
-		        <div class="row">
-		            <div class="col-sm-6">
-		                <div class="form-group">
-		                    <label class="control-label" for="project_language_from">Source language</label>
-		                    <select required="required" name="project[language_from]" class="form-control" id="project_language_from">
-		                        <option value=""></option>
-		                        <option value="en" selected="selected">English</option>
-		                        <option value="es">Spanish</option>
-		                    </select>
-		                </div>
-		            </div>
-
-		            <div class="col-sm-6">
-		                <div class="form-group">
-		                    <label class="control-label" for="project_language_to">Target language</label>
-		                    <select required="required" name="project[language_to]" class="form-control" id="project_language_to">
-		                        <option value=""></option>
-		                        <option value="en">English</option>
-		                        <option value="es" selected="selected">Spanish</option>
-		                    </select>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="row">
-		        	<div class="col-sm-6">
-		                <div class="form-group">
-		                    <label class="control-label" for="customer_email">Your Email</label>
-		                    <input type="email" name="project[customer_email]"required="required" class="form-control" id="customer_email" placeholder="example@example.com">
-		                </div>
-		        	</div>
-		        </div>
-		        <div class='row'>
-		        	<div class="col-sm-12">
-		        		<div class="form-group" id="ajax_response">
-		        		</div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="modal-footer">
-		        <button type="submit" class="btn btn-primary">Translate!</button>
-		        <div id="callback_response"></div>
-		    </div>
-		</form>      
-    </div>
-  </div>
-</div>	
-
-<div class="mod">
+			<div class="mod">
 	<div class="mod-wrapper">
 		<ul class="featured-in">
 			<li><span class="seen-in">Featured in</span></li>
-			<li><a href="http://techcrunch.com/2014/07/18/the-brandery-accelerator-launches-its-latest-class/" target="_blank"><img src="images/logo-tc.png" /></a></li>
+			<li><a href="http://techcrunch.com/2014/07/18/the-brandery-accelerator-launches-its-latest-class/"><img src="images/logo-tc.png" /></a></li>
 			<li><a href="http://www.brandery.org" target="_blank"><img src="images/logo-brandery.jpg" class="logo-brandery" /></a></li>
 			<li><a href="http://www.cincinnati.com/story/money/business/2014/07/22/the-brandery-announces-new-class-of-startups/12992585/" target="_blank"><img src="images/logo-cincinnati.png" /></a></li>
-			<li><a href="http://www.revolution.com/revolutionary-views/post/riseofrest-pitch-competition-finalists-announced#.U_59O9y-ITs" target="_blank"><img src="images/logo-rise.png" class="logo-rise" /></a></li>
+			<li><a href="http://www.revolution.com/revolutionary-views/post/riseofrest-pitch-competition-finalists-announced#.U_59O9y-ITs"><img src="images/logo-rise.png" class="logo-rise" /></a></li>
 		</ul>
 	</div>
 </div>
@@ -258,19 +147,22 @@
 		</div>
 	</div>
 </div>
+		</div>
+	</div>
+</div>
+</div>
 
 <div class="mod footer">
 	<div class="mod-wrapper">
 		<div class="footer-blurb">
 			<p>Ready to order your translation?</p>
-			<a class="button" data-toggle="modal" data-target=".bs-example-modal-sm" >Try it for free</a>
+			<a class="button">Try it for free</a>
 		</div>
 
 		<ul>
 			<li><a href="about.html">About Keego</a></li>
 			<li><a href="news.html">In the News</a></li>
 			<li><a href="investors.html">Investors</a></li>
-			<li><a href="jobs.html">Jobs</a></li>
 			<li><a href="http://blog.keego.co">Blog</a></li>
 		</ul>
 
@@ -283,13 +175,35 @@
 		</ul>
 	</div>
 </div>
+<script type="text/javascript">
+	// The plugin code
+(function($){
+    $.fn.parallax = function(options){
+        var $$ = $(this);
+        offset = $$.offset();
+        var defaults = {
+            "start": 0,
+            "stop": offset.top + $$.height(),
+            "coeff": 0.95
+        };
+        var opts = $.extend(defaults, options);
+        return this.each(function(){
+            $(window).bind('scroll', function() {
+                windowTop = $(window).scrollTop();
+                if((windowTop >= opts.start) && (windowTop <= opts.stop)) {
+                    newCoord = windowTop * opts.coeff;
+                    $$.css({
+                        "background-position": "0 "+ newCoord + "px"
+                    });
+                }
+            });
+        });
+    };
+})(jQuery);
 
-<script src="js/jquery.backstretch.min.js"></script>
-<script>
-	// $('.blurb').backstretch("//d37hg21mvr93w7.cloudfront.net/img/hero-home.1408557863.jpg");
-	$('.blurb').backstretch("images/hello-keego.jpg");
-</script>
-<script src="js/bootstrap.min.js"></script>
-
+// call the plugin
+$('.section').parallax({ "coeff":-0.65 });
+$('.section .inner').parallax({ "coeff":1.15 });
+	</script>
 </body>
 </html>

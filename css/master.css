@@ -243,13 +243,13 @@ h3 {
 
 .button {
 	display: inline-block;
-	padding: 20px;
-	font-size: 20px;
-	text-transform: uppercase;
+	padding: 15px;
+	font-size: 18px;
 	color: #fff;
 	background: #e93060;
 	border-radius: 5px;
 }
+
 .button:hover {
 	text-decoration: none;
 	color: white;
@@ -459,6 +459,17 @@ p.about span {
 	border-radius: 3px;
 }
 
+.section {
+	width: 1280px;
+	height: 700px;
+	background: url(../images/ii1.png) no-repeat #eee;
+}
+
+.section .inner {
+	width: 1280px;
+	height: 700px;
+	background: url(../images/ii2.png) no-repeat;
+}
 
 @media screen and (max-width: 800px) {
 	.blurb h2 {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<title>Keego</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="css/master.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+</head>
+
+<body class="page">
+
+<div style="background: #eee;">
+<div style="margin: 0 auto; max-width: 1280px; width: 1280px;">
+	<div class="section">
+		<div class="inner">
+			<div class="blurb-wrapper">
+				<h2>Translate everything.</h2>
+				<p class="intro">We are redefining the translation services industry by allowing anybody, anywhere in the world to translate. Try it for free, your first 150 words are on us.</p>
+				<a style="margin-bottom: 10px;" class="button" href="">Try it for free</a>
+				<p style="font-size: 16px;">No monthly contracts, no obligations, no headaches.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="mod" style="">
+	<div class="mod-wrapper">
+		<div class="mod-header">
+			<h2>Translation crafted by our community of <strong>professionals and bilinguals</strong></h2>
+		</div>
+
+		<div class="span-6 col user">
+			<img src="images/carolina.jpg">
+			<h3>Carolina Gandía</h3>
+			<p class="user-location">Berlin, Germany</p>
+			<p>Professional translator with a BA degree in Translation and Interpreting from the Universitat Oberta de Catalunya.</p>
+			<span class="user-verified">✓ Verified by Keego</span>
+		</div>
+
+		<div class="span-6 col user">
+			<img src="images/antonio.jpg">
+			<h3>Antonio Cobo</h3>
+			<p class="user-location">Buenos Aires, Argentina</p>
+			<p>Systems Engineer, translating for his consulting company. Translates articles about music, news and interviews.</p>
+			<span class="user-verified">✓ Verified by Keego</span>
+		</div>
+	</div>
+</div>
+
+<div class="mod footer">
+	<div class="mod-wrapper">
+		<div class="footer-blurb">
+			<p>Ready to order your translation?</p>
+			<a class="button">Try it for free</a>
+		</div>
+
+		<ul>
+			<li><a href="about.html">About Keego</a></li>
+			<li><a href="news.html">In the News</a></li>
+			<li><a href="investors.html">Investors</a></li>
+			<li><a href="http://blog.keego.co">Blog</a></li>
+		</ul>
+
+		<ul>
+			<li><a href="http://www.twitter.com/usekeego">Follow us on Twitter</a></li>
+		</ul>
+
+		<ul>
+			<li>&copy; 2014 Keego LLC · Made with ❤ in OTR, USA</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	// The plugin code
+(function($){
+    $.fn.parallax = function(options){
+        var $$ = $(this);
+        offset = $$.offset();
+        var defaults = {
+            "start": 0,
+            "stop": offset.top + $$.height(),
+            "coeff": 0.95
+        };
+        var opts = $.extend(defaults, options);
+        return this.each(function(){
+            $(window).bind('scroll', function() {
+                windowTop = $(window).scrollTop();
+                if((windowTop >= opts.start) && (windowTop <= opts.stop)) {
+                    newCoord = windowTop * opts.coeff;
+                    $$.css({
+                        "background-position": "0 "+ newCoord + "px"
+                    });
+                }
+            });
+        });
+    };
+})(jQuery);
+
+// call the plugin
+$('.section').parallax({ "coeff":-0.65 });
+$('.section .inner').parallax({ "coeff":1.15 });
+	</script>
+</body>
+</html>
