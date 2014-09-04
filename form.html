@@ -19,14 +19,14 @@
 	</div>
 
 	<div class="col span-7">
-		<form class="form">
+		<form class="form" method="POST" action="/submitEmail.php">
 			<div class="field">
 				<div class="field-label">
 					<label for="text">Text to translate</label>
 				</div>
 
 				<div class="field-input">
-					<textarea id="text" name="text"></textarea>
+					<textarea id="text" required name="project[text_original]"></textarea>
 				</div>
 			</div>
 
@@ -36,9 +36,9 @@
 				</div>
 
 				<div class="field-input field-select-wrapper">
-					<select>
-						<option>Spanish to English</option>
-						<option>English to Spanish</option>
+					<select required name="project[languages]">
+						<option value="spanish_to_english">Spanish to English</option>
+						<option value="english_to_spanish">English to Spanish</option>
 					</select>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 				</div>
 
 				<div class="field-input">
-					<input type="text" id="email" class="email" />
+					<input required type="text" id="email" class="email" name="project[customer_email]">
 				</div>
 			</div>
 
@@ -59,13 +59,13 @@
 				</div>
 
 				<div class="field-input">
-					<input type="text" id="name" class="name" />
+					<input required type="text" id="name" class="name" name="project[customer_name]">
 				</div>
 			</div>
 
 			<div class="field">
 				<div class="field-input nudged">
-					<a class="button">Order translation</a>
+					<button class="button" type="submit" >Order translation</button>
 				</div>
 			</div>
 

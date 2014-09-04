@@ -2,11 +2,12 @@
 <?php
 	$input = json_encode($_POST);	
 	$input = json_decode($input);
+	// var_dump($input);
 	$emailString = "";
 	$emailString .= "Text to trasnlate: ".$input->project->text_original."<br>";
-	$emailString .= "From: ".$input->project->language_from."<br>";
-	$emailString .= "To: ".$input->project->language_to."<br>";
-	$emailString .= "Customer: ".$input->project->customer_email."<br>";
+	$emailString .= "<br>Languages: ".$input->project->languages."<br>";
+	$emailString .= "<br>Customer Email: ".$input->project->customer_email."<br>";
+	$emailString .= "<br>Customer Name: ".$input->project->customer_name."<br>";
 
 	$url = 'https://api.sendgrid.com/';
 	$user = 'avillalobos';
@@ -44,6 +45,8 @@
 	$messageSuccess = "Thank you! Expect to see an email with hand-picked translators to get your project started very soon.";
 	$maessageFailure = "<span>Oops!</span> Something went wrong :c";
 
+	// echo $response;
+
 	$response = json_decode($response);
 	if ($response == "success") {
 		$message = $messageSuccess;
@@ -67,6 +70,7 @@
 	<link rel="stylesheet" href="css/master.css">
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="//cdn.optimizely.com/js/1850440010.js"></script>
 </head>
 
 <body class="page">
@@ -108,6 +112,15 @@
 		</ul>
 	</div>
 </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-49324915-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
